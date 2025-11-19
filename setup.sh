@@ -52,6 +52,21 @@ elif [ -n "$BASE_IMAGE" ]; then
     echo "Warning: Dockerfile not found, cannot set base image."
 fi
 
+-----------------------------
+# Replace __repo_name__ in file names under .config
+# -----------------------------
+if [ -d ".config" ]; then
+    echo "Renaming files in .config containing __repo_name__..."
+    find .config -type f -name "*__repo_name__*" | while read -r file; do
+        newfile=$(echo "$file" | sed "s|__repo_name__|$REPO_NAME|g")
+        mv "$file" "$newfile"
+        echo "Renamed: $file -> $newfile"
+    done
+else
+    echo "No .config directory found, skipping file renaming."
+fi
+
+
 echo "Setup complete!"
 
 # -----------------------------

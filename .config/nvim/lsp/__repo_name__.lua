@@ -1,0 +1,2 @@
+--lsp config
+--eg.: vim.lsp.enable('pylsp')
