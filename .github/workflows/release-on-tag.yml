@@ -1,0 +1,18 @@
+name: Release on Tag
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v[0-9]*.[0-9]*'       # matches vX.Y
+      - 'v[0-9]*.[0-9]*.[0-9]*'  # matches vX.Y.Z
+
+permissions:
+  contents: write  # Required for updating branches
+
+jobs:
+  semantic-release:
+    uses: Gergo3/nvim-docker-workflows/.github/workflows/semver-release.yml@master
+    secrets:
+      inherit
+

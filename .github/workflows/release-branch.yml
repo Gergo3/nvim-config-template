@@ -1,0 +1,18 @@
+name: Build Docker Image on Branch Push
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'master'  # runs on master branch
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  call-docker-build:
+    uses: Gergo3/nvim-docker-workflows/.github/workflows/release-branch.yml@master
+    secrets:
+      inherit
+
