@@ -52,7 +52,7 @@ elif [ -n "$BASE_IMAGE" ]; then
     echo "Warning: Dockerfile not found, cannot set base image."
 fi
 
------------------------------
+# -----------------------------
 # Replace __repo_name__ in file names under .config
 # -----------------------------
 if [ -d ".config" ]; then
